@@ -1,9 +1,13 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+l = TodoList.create(title: "Standards of reasoning", description: "Inductive argum ents are generalizations, like inferring that all ravens are black based on many individual observations.")
+
+l.list_sections << ListSection.create(title: "Spyridon Marinatos")
+l.list_sections << ListSection.create(title: "Achaemenid Persian Empire")
+
+s = ListSection.find 1
+s.tasks << Task.new(title: "Around the start", description: "Around the start o f the invasion, a Greek force of approximately 7,000 men led by Leonidas marched north to bl ock the pass of Thermopylae.")
+
+s.tasks << Task.new(title: "Around the start", description: "Around the start o f the invasion, a Greek force of approximately 7,000 men led by Leonidas marched north to bl ock the pass of Thermopylae.")
+
+s = ListSection.find 2
+s.tasks << Task.new(title: "The primary source ", description: "The primary sou rce for the Greco-Persian Wars is the Greek historian Herodotus. The Sicilian historian Diod orus Siculus")
+
