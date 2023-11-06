@@ -1,0 +1,9 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back"), todo_list_path(@todo_list) %>
+
+  <div class="header">
+    <h1>Edit</h1>
+  </div>
+
+  <%= render "form", todo_list: @todo_list %>
+</main>

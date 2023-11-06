@@ -1,0 +1,11 @@
+<%= simple_form_for todo_list, html: { class: "todo_list form" } do |f| %>
+  <% if todo_list.errors.any? %>
+    <div class="error-message">
+      <%= todo_list.errors.full_messages.to_sentence.capitalize %>
+    </div>
+  <% end %>
+
+  <%= f.input :title, input_html: { autofocus: true } %>
+  <%= f.input :description %>
+  <%= f.submit class: "btn btn--secondary" %>
+<% end %>

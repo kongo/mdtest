@@ -1,26 +1,9 @@
 <h1>ToDo Dashboard</h1>
 
+<%= link_to "New List",
+  new_todo_list_path,
+  class: "btn btn--primary" %>
+
 <div id="todo_lists">
-  <% @todo_lists.each do |todo_list| %>
-    <h2><%= todo_list.title %></h2>
-    <p><%= todo_list.description %></p>
-
-    <div style="padding-left: 2em;">
-      <% todo_list.list_sections.each do |list_section| %>
-        <h3><%= list_section.title %></h3>
-        <ul>
-          <div style="padding-left: 2em;">
-            <% list_section.tasks.each do |task| %>
-              <li>
-                <h4><%= task.title %></h4>
-                <%= task.description %>
-              </li>
-            <% end %>
-          </div>
-        </ul>
-      <% end %>
-    </div>
-
-    <hr/>
-  <% end %>
+  <%= render @todo_lists %>
 </div>
