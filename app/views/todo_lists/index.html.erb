@@ -1,9 +1,14 @@
-<h1>ToDo Dashboard</h1>
+<main class="container">
 
-<%= link_to "New List",
-  new_todo_list_path,
-  class: "btn btn--primary" %>
+  <h1>ToDo Dashboard</h1>
 
-<div id="todo_lists">
-  <%= render @todo_lists %>
-</div>
+  <%= turbo_frame_tag "new_todo_list_form" do %>
+    <%= link_to "New List", new_todo_list_path, class: "btn btn--primary" %>
+  <% end %>
+
+  <div id="todo_lists">
+    <%= turbo_frame_tag "todo_lists_index" do %>
+      <%= render @todo_lists %>
+    <% end %>
+  </div>
+</main>
