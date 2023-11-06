@@ -19,7 +19,7 @@ class TodoListsController < ApplicationController
     if @todo_list.save
       redirect_to todo_lists_path, notice: "ToDo list was successfully created."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
