@@ -1,0 +1,8 @@
+<%= turbo_stream.prepend "todo_lists" do %>
+  <%= render @todo_list %>
+<% end %>
+
+<%= turbo_stream.update TodoList.new do %>
+  <%= render partial: "new_list_link" %>
+<% end %>
+

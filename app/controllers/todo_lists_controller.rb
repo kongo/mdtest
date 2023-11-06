@@ -2,7 +2,7 @@ class TodoListsController < ApplicationController
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = TodoList.order("updated_at desc").all
   end
 
   def show
@@ -17,7 +17,10 @@ class TodoListsController < ApplicationController
     @todo_list = TodoList.new(todo_list_params)
 
     if @todo_list.save
-      redirect_to todo_lists_path, notice: "ToDo list was successfully created."
+      respond_to do |format|
+        format.html { redirect_to todo_lists_path, notice: "ToDo list was successfully created."}
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
