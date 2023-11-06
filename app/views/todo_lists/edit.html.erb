@@ -5,5 +5,7 @@
     <h1>Edit</h1>
   </div>
 
-  <%= render "form", todo_list: @todo_list %>
+  <%= turbo_frame_tag @todo_list do %>
+    <%= render "form", todo_list: @todo_list %>
+  <% end %>
 </main>

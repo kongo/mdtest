@@ -1,8 +1,21 @@
-<h2><%= todo_list.title %></h2>
-<p><%= todo_list.description %></p>
+<%= turbo_frame_tag todo_list do %>
+  <h2><%= todo_list.title %></h2>
+  <p><%= todo_list.description %></p>
 
-<div style="padding-left: 2em;">
-  <%= render todo_list.list_sections %>
-</div>
+  <div style="padding-left: 2em;">
+    <%= render todo_list.list_sections %>
+  </div>
+
+  <div class="todo_list_actions">
+    <%= button_to "Delete",
+      todo_list_path(todo_list),
+      method: :delete,
+      class: "btn btn--light" %>
+    <%= link_to "Edit",
+      edit_todo_list_path(todo_list),
+      class: "btn btn--light" %>
+  </div>
+
 
 <hr/>
+<% end %>
