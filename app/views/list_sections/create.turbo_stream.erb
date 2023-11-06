@@ -1,0 +1,10 @@
+<%= turbo_stream.prepend nested_dom_id(@list_section.todo_list, "list_sections") do %>
+  <%= render @list_section %>
+<% end %>
+
+<%= turbo_stream.update nested_dom_id(@list_section.todo_list, ListSection.new) do %>
+  <%= render(partial: "new_list_section_link", locals: { todo_list: @list_section.todo_list }) %>
+<% end %>
+
+<%= render_turbo_stream_flash_messages %>
+

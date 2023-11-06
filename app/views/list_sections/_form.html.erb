@@ -1,0 +1,12 @@
+<%= simple_form_for [todo_list, list_section] do |f| %>
+  <% if list_section.errors.any? %>
+    <div class="error-message">
+      <%= list_section.errors.full_messages.to_sentence.capitalize %>
+    </div>
+  <% end %>
+
+  <%= f.input :title, input_html: { autofocus: true } %>
+  <%= link_to "Cancel", todo_lists_path, class: "btn btn--light" %>
+  <%= f.submit class: "btn btn--secondary" %>
+<% end %>
+

@@ -1,6 +1,21 @@
-<h3><%= list_section.title %></h3>
-<ul>
-  <div style="padding-left: 2em;">
-    <%= render list_section.tasks %>
+<%= turbo_frame_tag nested_dom_id(list_section.todo_list, list_section) do %>
+
+  <h3><%= list_section.title %></h3>
+
+  <div>
+    <%= button_to "Delete",
+      [list_section.todo_list, list_section],
+      method: :delete,
+      class: "btn btn--light" %>
+    <%= link_to "Edit",
+      edit_todo_list_list_section_path(list_section.todo_list, list_section),
+      class: "btn btn--light" %>
   </div>
-</ul>
+
+  <ul>
+    <div style="padding-left: 2em;">
+      <%= render list_section.tasks %>
+    </div>
+  </ul>
+
+<% end %>

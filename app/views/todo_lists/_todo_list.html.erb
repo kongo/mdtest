@@ -2,10 +2,6 @@
   <h2><%= todo_list.title %></h2>
   <p><%= todo_list.description %></p>
 
-  <div style="padding-left: 2em;">
-    <%= render todo_list.list_sections %>
-  </div>
-
   <div class="todo_list_actions">
     <%= button_to "Delete",
       todo_list_path(todo_list),
@@ -16,6 +12,21 @@
       class: "btn btn--light" %>
   </div>
 
+  <div>
+  </div>
+  <%= turbo_frame_tag nested_dom_id(todo_list, ListSection.new) do %>
+    <%= link_to "Add section",
+      [:new, todo_list, :list_section],
+      data: { turbo_frame: nested_dom_id(todo_list, ListSection.new) },
+      class: "btn btn--primary" %>
+  <% end %>
+
+
+  <div style="padding-left: 2em;">
+    <%= turbo_frame_tag nested_dom_id(todo_list, "list_sections") do %>
+      <%= render todo_list.list_sections %>
+    <% end %>
+  </div>
 
 <hr/>
 <% end %>
