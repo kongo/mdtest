@@ -8,6 +8,8 @@
 
   <%= turbo_frame_tag TodoList.new %>
 
+  <%= turbo_stream_from "todo_lists" %>
+
   <%= turbo_frame_tag "todo_lists" do %>
     <%= render @todo_lists %>
   <% end %>
