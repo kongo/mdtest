@@ -37,7 +37,10 @@ class TodoListsController < ApplicationController
 
   def destroy
     @todo_list.destroy
-    redirect_to todo_lists_path, notice: "ToDo list was successfully destroyed."
+    respond_to do |format|
+      format.html { redirect_to todo_lists_path, notice: "ToDo list was successfully destroyed." }
+      format.turbo_stream
+    end
   end
 
   private
