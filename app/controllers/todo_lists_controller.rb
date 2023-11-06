@@ -19,7 +19,7 @@ class TodoListsController < ApplicationController
     if @todo_list.save
       respond_to do |format|
         format.html { redirect_to todo_lists_path, notice: "ToDo list was successfully created."}
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "ToDo list was successfully created."}
       end
     else
       render :new, status: :unprocessable_entity
@@ -34,7 +34,7 @@ class TodoListsController < ApplicationController
     if @todo_list.update(todo_list_params)
       redirect_to todo_lists_path, notice: "ToDo list was successfully updated."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
