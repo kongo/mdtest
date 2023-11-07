@@ -10,11 +10,17 @@
     <%= link_to "Edit",
       edit_todo_list_list_section_path(list_section.todo_list, list_section),
       class: "btn btn--light" %>
+
+    <%= turbo_frame_tag nested_dom_id(list_section.todo_list, list_section, Task.new) do %>
+      <%= render partial: "tasks/new_task_link", locals: { list_section: list_section } %>
+    <% end %>
   </div>
 
   <ul>
     <div style="padding-left: 2em;">
-      <%= render list_section.tasks %>
+      <%= turbo_frame_tag nested_dom_id(list_section.todo_list, list_section, "tasks") do %>
+        <%= render list_section.tasks %>
+      <% end %>
     </div>
   </ul>
 

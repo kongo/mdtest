@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources "todo_lists" do
     resources "list_sections", only: [:show, :edit, :new, :create, :update, :destroy] do
-      resources "tasks", only: [:index, :show, :new, :edit, :update, :destroy]
+      resources "tasks", only: [:index, :show, :new, :create, :edit, :update, :destroy]
     end
   end
 end

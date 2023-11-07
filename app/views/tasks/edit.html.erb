@@ -1,0 +1,11 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back"), todo_lists_path %>
+
+  <div class="header">
+    <h1>Edit</h1>
+  </div>
+
+  <%= turbo_frame_tag nested_dom_id(@task.todo_list, @task.list_section, @task) do %>
+    <%= render "form", task: @task, list_section: @task.list_section, todo_list: @task.todo_list %>
+  <% end %>
+</main>

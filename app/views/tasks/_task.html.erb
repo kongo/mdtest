@@ -1,4 +1,15 @@
-<li>
-  <h4><%= task.title %></h4>
-  <%= task.description %>
-</li>
+<%= turbo_frame_tag nested_dom_id(task.todo_list, task.list_section, task) do %>
+  <li>
+    <h4><%= task.title %></h4>
+    <%= task.description %>
+
+    <%= link_to "Edit",
+      edit_todo_list_list_section_task_path(task.todo_list, task.list_section, task),
+      class: "btn btn--light" %>
+
+    <%= button_to "Delete",
+      [task.todo_list, task.list_section, task],
+      method: :delete,
+      class: "btn btn--light" %>
+  </li>
+<% end %>

@@ -33,7 +33,7 @@ class ListSectionsController < ApplicationController
 
   def update
     if @list_section.update(list_section_params)
-      redirect_to todo_lists_path, notice: "Section list was successfully updated."
+      redirect_to todo_list_list_section_path(@list_section.todo_list, @list_section), notice: "Section list was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
