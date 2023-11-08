@@ -2,7 +2,7 @@ class TodoListsController < ApplicationController
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @todo_lists = TodoList.order("updated_at desc").all
+    @todo_lists = TodoList.order("created_at desc").all
   end
 
   def show

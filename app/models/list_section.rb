@@ -1,6 +1,6 @@
 class ListSection < ApplicationRecord
   belongs_to :todo_list
-  has_many :tasks, dependent: :destroy
+  has_many :tasks, -> { order("created_at desc") }, dependent: :destroy
   validates :title, presence: true
 
   after_create_commit ->(list_section) {

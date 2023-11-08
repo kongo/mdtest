@@ -1,5 +1,13 @@
 <%= turbo_frame_tag nested_dom_id(task.todo_list, task.list_section, task) do %>
   <li>
+
+    <div data-controller="task-checker">
+      <%= simple_form_for [task.todo_list, task.list_section, task], html: { id: "task-checker-form-#{task.id}", "data-task-checker-target" => "form" } do |f| %>
+        <%= f.input :is_checked, label: false, input_html: { "data-target" =>  "task-checker-form-#{task.id}", "data-action" => "input->task-checker#toggle" } %>
+      <% end %>
+    </div>
+
+
     <h4><%= task.title %></h4>
     <%= task.description %>
 
