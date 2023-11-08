@@ -6,7 +6,7 @@
   </div>
 
   <%= turbo_frame_tag nested_dom_id(@todo_list, @list_section, Task.new) do %>
-    <%= render "form", todo_list: @todo_list, list_section: @list_section, task: Task.new %>
+    <%= render "form", todo_list: @todo_list, list_section: @list_section, task: @task %>
   <% end %>
 
 </main>

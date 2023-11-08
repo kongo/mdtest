@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :list_section
   delegate :todo_list, to: :list_section
+  validates :title, presence: true
 
   after_create_commit ->(task) {
     broadcast_append_to "tasks", target: task.list_dom_id, partial: "tasks/task", locals: { task: task }
