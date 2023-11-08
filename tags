@@ -1,0 +1,69 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ActiveSupport	test/test_helper.rb	/^module ActiveSupport$/;"	m
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Mdtest
+ApplicationCable	app/channels/application_cable/channel.rb	/^module ApplicationCable$/;"	m
+ApplicationCable	app/channels/application_cable/connection.rb	/^module ApplicationCable$/;"	m
+ApplicationCable	test/channels/application_cable/connection_test.rb	/^module ApplicationCable$/;"	m
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+ApplicationJob	app/jobs/application_job.rb	/^class ApplicationJob < ActiveJob::Base$/;"	c
+ApplicationMailer	app/mailers/application_mailer.rb	/^class ApplicationMailer < ActionMailer::Base$/;"	c
+ApplicationRecord	app/models/application_record.rb	/^class ApplicationRecord < ActiveRecord::Base$/;"	c
+ApplicationSystemTestCase	test/application_system_test_case.rb	/^class ApplicationSystemTestCase < ActionDispatch::SystemTestCase$/;"	c
+Channel	app/channels/application_cable/channel.rb	/^  class Channel < ActionCable::Channel::Base$/;"	c	class:ApplicationCable
+Connection	app/channels/application_cable/connection.rb	/^  class Connection < ActionCable::Connection::Base$/;"	c	class:ApplicationCable
+ConnectionTest	test/channels/application_cable/connection_test.rb	/^  class ConnectionTest < ActionCable::Connection::TestCase$/;"	c	class:ApplicationCable
+CreateListSections	db/migrate/20231105230642_create_list_sections.rb	/^class CreateListSections < ActiveRecord::Migration[7.1]$/;"	c
+CreateTasks	db/migrate/20231105230751_create_tasks.rb	/^class CreateTasks < ActiveRecord::Migration[7.1]$/;"	c
+CreateTodoLists	db/migrate/20231105230518_create_todo_lists.rb	/^class CreateTodoLists < ActiveRecord::Migration[7.1]$/;"	c
+ListSection	app/models/list_section.rb	/^class ListSection < ApplicationRecord$/;"	c
+ListSectionsController	app/controllers/list_sections_controller.rb	/^class ListSectionsController < ApplicationController$/;"	c
+ListSectionsHelper	app/helpers/list_sections_helper.rb	/^module ListSectionsHelper$/;"	m
+Mdtest	config/application.rb	/^module Mdtest$/;"	m
+Task	app/models/task.rb	/^class Task < ApplicationRecord$/;"	c
+TasksController	app/controllers/tasks_controller.rb	/^class TasksController < ApplicationController$/;"	c
+TasksHelper	app/helpers/tasks_helper.rb	/^module TasksHelper$/;"	m
+TestCase	test/test_helper.rb	/^  class TestCase$/;"	c	class:ActiveSupport
+TodoList	app/models/todo_list.rb	/^class TodoList < ApplicationRecord$/;"	c
+TodoListsController	app/controllers/todo_lists_controller.rb	/^class TodoListsController < ApplicationController$/;"	c
+TodoListsHelper	app/helpers/todo_lists_helper.rb	/^module TodoListsHelper$/;"	m
+change	db/migrate/20231105230518_create_todo_lists.rb	/^  def change$/;"	f	class:CreateTodoLists
+change	db/migrate/20231105230642_create_list_sections.rb	/^  def change$/;"	f	class:CreateListSections
+change	db/migrate/20231105230751_create_tasks.rb	/^  def change$/;"	f	class:CreateTasks
+create	app/controllers/list_sections_controller.rb	/^  def create$/;"	f	class:ListSectionsController
+create	app/controllers/tasks_controller.rb	/^  def create$/;"	f	class:TasksController
+create	app/controllers/todo_lists_controller.rb	/^  def create$/;"	f	class:TodoListsController
+destroy	app/controllers/list_sections_controller.rb	/^  def destroy$/;"	f	class:ListSectionsController
+destroy	app/controllers/tasks_controller.rb	/^  def destroy$/;"	f	class:TasksController
+destroy	app/controllers/todo_lists_controller.rb	/^  def destroy$/;"	f	class:TodoListsController
+edit	app/controllers/list_sections_controller.rb	/^  def edit$/;"	f	class:ListSectionsController
+edit	app/controllers/tasks_controller.rb	/^  def edit$/;"	f	class:TasksController
+edit	app/controllers/todo_lists_controller.rb	/^  def edit$/;"	f	class:TodoListsController
+index	app/controllers/list_sections_controller.rb	/^  def index$/;"	f	class:ListSectionsController
+index	app/controllers/todo_lists_controller.rb	/^  def index$/;"	f	class:TodoListsController
+list_section_params	app/controllers/list_sections_controller.rb	/^  def list_section_params$/;"	f	class:ListSectionsController
+nested_dom_id	app/helpers/application_helper.rb	/^  def nested_dom_id(*args)$/;"	f	class:ApplicationHelper
+new	app/controllers/list_sections_controller.rb	/^  def new$/;"	f	class:ListSectionsController
+new	app/controllers/tasks_controller.rb	/^  def new$/;"	f	class:TasksController
+new	app/controllers/todo_lists_controller.rb	/^  def new$/;"	f	class:TodoListsController
+render_turbo_stream_flash_messages	app/helpers/application_helper.rb	/^  def render_turbo_stream_flash_messages$/;"	f	class:ApplicationHelper
+set_list_section	app/controllers/list_sections_controller.rb	/^  def set_list_section$/;"	f	class:ListSectionsController
+set_list_section	app/controllers/tasks_controller.rb	/^  def set_list_section$/;"	f	class:TasksController
+set_task	app/controllers/tasks_controller.rb	/^  def set_task$/;"	f	class:TasksController
+set_todo_list	app/controllers/list_sections_controller.rb	/^  def set_todo_list$/;"	f	class:ListSectionsController
+set_todo_list	app/controllers/tasks_controller.rb	/^  def set_todo_list$/;"	f	class:TasksController
+set_todo_list	app/controllers/todo_lists_controller.rb	/^  def set_todo_list$/;"	f	class:TodoListsController
+show	app/controllers/list_sections_controller.rb	/^  def show$/;"	f	class:ListSectionsController
+show	app/controllers/tasks_controller.rb	/^  def show$/;"	f	class:TasksController
+show	app/controllers/todo_lists_controller.rb	/^  def show$/;"	f	class:TodoListsController
+system!	bin/setup	/^def system!(*args)$/;"	f
+task_params	app/controllers/tasks_controller.rb	/^  def task_params$/;"	f	class:TasksController
+todo_list_params	app/controllers/todo_lists_controller.rb	/^  def todo_list_params$/;"	f	class:TodoListsController
+update	app/controllers/list_sections_controller.rb	/^  def update$/;"	f	class:ListSectionsController
+update	app/controllers/tasks_controller.rb	/^  def update$/;"	f	class:TasksController
+update	app/controllers/todo_lists_controller.rb	/^  def update$/;"	f	class:TodoListsController

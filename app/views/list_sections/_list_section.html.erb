@@ -1,28 +1,36 @@
 <%= turbo_frame_tag nested_dom_id(list_section.todo_list, list_section) do %>
+  <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-4 mb-0 p-6">
+    <div class="py-2">
+      <h1 class="text-gray-800 font-bold text-2xl uppercase"><%= list_section.title %></h1>
+    </div>
 
-  <h3><%= list_section.title %></h3>
+    <div>
+      <%= button_to "Delete section",
+        [list_section.todo_list, list_section],
+        method: :delete,
+        class: "w-15 font-light text-gray-500",
+        form: { style: "display: inline-block".html_safe } %>
+      &nbsp;
 
-  <div>
-    <%= button_to "Delete",
-      [list_section.todo_list, list_section],
-      method: :delete,
-      class: "btn btn--light" %>
-    <%= link_to "Edit",
-      edit_todo_list_list_section_path(list_section.todo_list, list_section),
-      class: "btn btn--light" %>
+      <%= link_to "Edit section",
+        edit_todo_list_list_section_path(list_section.todo_list, list_section),
+        class: "w-15 font-light text-gray-500" %>
+      &nbsp;
 
-    <%= turbo_frame_tag nested_dom_id(list_section.todo_list, list_section, Task.new) do %>
-      <%= render partial: "tasks/new_task_link", locals: { list_section: list_section } %>
-    <% end %>
-  </div>
-
-  <ul>
-    <div style="padding-left: 2em;">
-      <%= turbo_frame_tag nested_dom_id(list_section.todo_list, list_section, "tasks") do %>
-        <%= render list_section.tasks %>
+      <%= turbo_frame_tag nested_dom_id(list_section.todo_list, list_section, Task.new) do %>
+        <%= render partial: "tasks/new_task_link", locals: { list_section: list_section } %>
       <% end %>
     </div>
-  </ul>
+
+    <ul class="divide-y-2 divide-gray-200">
+      <div>
+        <%= turbo_frame_tag nested_dom_id(list_section.todo_list, list_section, "tasks") do %>
+          <%= render list_section.tasks %>
+        <% end %>
+      </div>
+    </ul>
+
+  </div>
 
 <% end %>
 <%= turbo_stream_from "tasks" %>

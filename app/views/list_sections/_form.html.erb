@@ -1,11 +1,17 @@
-<%= simple_form_for [todo_list, list_section] do |f| %>
-  <% if list_section.errors.any? %>
-    <div class="error-message">
-      <%= list_section.errors.full_messages.to_sentence.capitalize %>
-    </div>
-  <% end %>
+<%= simple_form_for [todo_list, list_section], html: { class: "w-full max-w-sm mx-auto px-4 py-2 todo_list form" } do |f| %>
+  <div class="border-b-2 border-teal-500 py-2">
+    <% if list_section.errors.any? %>
+      <div class="error-message">
+        <%= list_section.errors.full_messages.to_sentence.capitalize %>
+      </div>
+    <% end %>
 
-  <%= f.input :title, input_html: { autofocus: true } %>
-  <%= link_to "Cancel", todo_lists_path, class: "btn btn--light" %>
-  <%= f.submit class: "btn btn--secondary" %>
+    <div class="block mb-6">
+      <%= f.input :title, input_html: { class: "w-full text-gray-700 mr-3 py-1 px-2 leading-tight" } %>
+    </div>
+
+    <%= link_to "Cancel", todo_lists_path, class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
+    <%= f.submit class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
+
+  </div>
 <% end %>

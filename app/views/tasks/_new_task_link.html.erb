@@ -1,4 +1,4 @@
 <%= link_to "Add task",
   [:new, list_section.todo_list, list_section, :task],
   data: { turbo_frame: nested_dom_id(list_section.todo_list, list_section, Task.new) },
-  class: "btn btn--primary" %>
+  class: "font-light text-gray-500" %>

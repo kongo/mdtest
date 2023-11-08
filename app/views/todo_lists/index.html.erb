@@ -1,16 +1,13 @@
-<main class="container">
-
-  <h1>ToDo Dashboard</h1>
-
+<div class="max-w-4xl mx-auto overflow-hidden mt-6 mb-0 p-0">
   <%= turbo_frame_tag TodoList.new do %>
     <%= render partial: "new_list_link" %>
   <% end %>
+</div>
 
-  <%= turbo_frame_tag TodoList.new %>
+<%= turbo_frame_tag TodoList.new %>
 
-  <%= turbo_stream_from "todo_lists" %>
+<%= turbo_stream_from "todo_lists" %>
 
-  <%= turbo_frame_tag "todo_lists" do %>
-    <%= render @todo_lists %>
-  <% end %>
-</main>
+<%= turbo_frame_tag "todo_lists" do %>
+  <%= render @todo_lists %>
+<% end %>

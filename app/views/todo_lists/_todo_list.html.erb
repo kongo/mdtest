@@ -1,26 +1,31 @@
 <%= turbo_frame_tag todo_list do %>
-  <h2><%= todo_list.title %></h2>
-  <p><%= todo_list.description %></p>
+  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-4 mb-0 p-6">
+    <div class="px-4 py-2">
+      <h1 class="text-gray-1000 font-bold text-4xl uppercase">ToDo list: <%= todo_list.title %></h1>
+      <p class="text-gray-600 font-bold text-l"><%= todo_list.description %></p>
+    </div>
 
-  <div class="todo_list_actions">
-    <%= button_to "Delete",
-      todo_list_path(todo_list),
-      method: :delete,
-      class: "btn btn--light" %>
-    <%= link_to "Edit",
-      edit_todo_list_path(todo_list),
-      class: "btn btn--light" %>
+    <div class="todo_list_actions px-4">
+      <%= button_to "Delete list",
+        todo_list_path(todo_list),
+        method: :delete,
+        class: "w-15 font-light text-gray-500",
+        form: { style: "display: inline-block".html_safe } %>
+      &nbsp;
+
+      <%= link_to "Edit list",
+        edit_todo_list_path(todo_list),
+        class: "w-15 font-light text-gray-500",
+        form: { style: "display: inline-block".html_safe } %>
+      &nbsp;
+
+      <%= turbo_frame_tag nested_dom_id(todo_list, ListSection.new) do %>
+        <%= render partial: "list_sections/new_list_section_link", locals: { todo_list: todo_list } %>
+      <% end %>
+
+    </div>
+
   </div>
-
-  <div>
-  </div>
-  <%= turbo_frame_tag nested_dom_id(todo_list, ListSection.new) do %>
-    <%= link_to "Add section",
-      [:new, todo_list, :list_section],
-      data: { turbo_frame: nested_dom_id(todo_list, ListSection.new) },
-      class: "btn btn--primary" %>
-  <% end %>
-
 
   <div style="padding-left: 2em;">
     <%= turbo_frame_tag nested_dom_id(todo_list, "list_sections") do %>
@@ -28,6 +33,5 @@
     <% end %>
   </div>
 
-  <hr/>
 <% end %>
 <%= turbo_stream_from "list_sections" %>

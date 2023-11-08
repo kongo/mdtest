@@ -1,23 +1,26 @@
 <%= turbo_frame_tag nested_dom_id(task.todo_list, task.list_section, task) do %>
-  <li>
+  <li class="py-4">
+    <div class="flex items-center">
 
-    <div data-controller="task-checker">
-      <%= simple_form_for [task.todo_list, task.list_section, task], html: { id: "task-checker-form-#{task.id}", "data-task-checker-target" => "form" } do |f| %>
-        <%= f.input :is_checked, label: false, input_html: { "data-target" =>  "task-checker-form-#{task.id}", "data-action" => "input->task-checker#toggle" } %>
-      <% end %>
+      <div data-controller="task-checker">
+        <%= simple_form_for [task.todo_list, task.list_section, task], html: { id: "task-checker-form-#{task.id}", "data-task-checker-target" => "form" } do |f| %>
+          <%= f.input :is_checked, label: false, input_html: { "data-target" =>  "task-checker-form-#{task.id}", "data-action" => "input->task-checker#toggle", class: "h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded", id: "task_#{task.id}_is_checked" } %>
+        <% end %>
+      </div>
+
+      <label for="<%= "task_#{task.id}_is_checked" %>" class="ml-3 block text-gray-900">
+        <span class="text-lg font-medium"><%= task.title %></span>
+        <span class="text-sm font-light text-gray-500"><%= task.description %></span>
+      </label>
+
+      <%= link_to "Edit",
+        edit_todo_list_list_section_task_path(task.todo_list, task.list_section, task),
+        class: "ml-auto font-light text-gray-500" %>
+      &nbsp;
+      <%= button_to "Delete",
+        [task.todo_list, task.list_section, task],
+        method: :delete,
+        class: "font-light text-gray-500" %>
     </div>
-
-
-    <h4><%= task.title %></h4>
-    <%= task.description %>
-
-    <%= link_to "Edit",
-      edit_todo_list_list_section_task_path(task.todo_list, task.list_section, task),
-      class: "btn btn--light" %>
-
-    <%= button_to "Delete",
-      [task.todo_list, task.list_section, task],
-      method: :delete,
-      class: "btn btn--light" %>
   </li>
 <% end %>
