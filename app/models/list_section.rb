@@ -1,6 +1,7 @@
 class ListSection < ApplicationRecord
   belongs_to :todo_list
   has_many :tasks, -> { order("created_at desc") }, dependent: :destroy
+  accepts_nested_attributes_for :tasks
   validates :title, presence: true
 
   after_create_commit ->(list_section) {
@@ -14,6 +15,13 @@ class ListSection < ApplicationRecord
   after_destroy_commit ->(list_section) {
     broadcast_remove_to "list_sections", target: list_section.dom_id
   }
+
+  def serialize_for_template
+    {
+      title: title,
+      tasks: tasks.map(&:serialize_for_template)
+    }
+  end
 
   protected
 

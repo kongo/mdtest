@@ -22,7 +22,11 @@
       <%= turbo_frame_tag nested_dom_id(todo_list, ListSection.new) do %>
         <%= render partial: "list_sections/new_list_section_link", locals: { todo_list: todo_list } %>
       <% end %>
+      &nbsp;
 
+      <%= turbo_frame_tag nested_dom_id(todo_list, TodoListTemplate.new) do %>
+        <%= render partial: "todo_list_templates/new_template_link", locals: { todo_list: todo_list } %>
+      <% end %>
     </div>
 
   </div>

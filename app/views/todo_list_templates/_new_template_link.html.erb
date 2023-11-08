@@ -1,0 +1,5 @@
+      <%= link_to "Save template",
+        new_todo_list_template_path(todo_list_id: todo_list.id),
+        data: { turbo_frame: nested_dom_id(todo_list, TodoListTemplate.new) },
+        class: "w-15 font-light text-gray-500",
+        form: { style: "display: inline-block".html_safe } %>

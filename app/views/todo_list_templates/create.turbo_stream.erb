@@ -1,0 +1,5 @@
+<%= turbo_stream.update nested_dom_id(@todo_list, TodoListTemplate.new) do %>
+  <%= render partial: "new_template_link", locals: { todo_list: @todo_list } %>
+<% end %>
+
+<%= render_turbo_stream_flash_messages %>

@@ -26,6 +26,22 @@ class TodoListsController < ApplicationController
     end
   end
 
+  def new_from_template
+    @templates = TodoListTemplate.all
+  end
+
+  def create_from_template
+    @todo_list_template = TodoListTemplate.find(params[:todo_list_template_id])
+    if (@todo_list = TodoList.create_from_template(@todo_list_template))
+      respond_to do |format|
+        format.html { redirect_to todo_lists_path, notice: "ToDo list was successfully created."}
+        format.turbo_stream { flash.now[:notice] = "ToDo list was successfully created."}
+      end
+    else
+      render :new_from_template, status: :unprocessable_entity
+    end
+  end
+
   def edit
     # empty
   end

@@ -1,0 +1,17 @@
+<% if templates.any? %>
+  <%= simple_form_for new_from_template_todo_lists_path, method: :post, html: { class: "w-full max-w-sm mx-auto px-4 py-2 todo_list form" } do |f| %>
+    <div class="border-b-2 border-teal-500 py-2">
+
+      <div class="block mb-4">
+        <%= collection_select(nil, "todo_list_template_id", templates, :id, :title) %>
+      </div>
+
+      <%= link_to "Cancel", todo_lists_path, class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
+      <%= f.submit value: "Create", class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
+    </div>
+  <% end %>
+
+<% else %>
+  First create a template from an existing todo list.
+  <%= link_to "Got it", todo_lists_path, class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
+<% end %>

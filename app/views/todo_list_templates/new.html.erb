@@ -1,0 +1,12 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back"), root_path %>
+
+  <div class="header">
+    <h1>Create template</h1>
+  </div>
+
+  <%= turbo_frame_tag nested_dom_id(@todo_list, TodoListTemplate.new) do %>
+    <%= render "form", todo_list: @todo_list, todo_list_template: @todo_list_template %>
+  <% end %>
+
+</main>

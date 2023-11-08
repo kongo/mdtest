@@ -1,0 +1,9 @@
+<%= turbo_stream.prepend "todo_lists" do %>
+  <%= render @todo_list %>
+<% end %>
+
+<%= turbo_stream.update "new_todo_list_from_template" do %>
+  <%= render partial: "new_list_from_template_link" %>
+<% end %>
+
+<%= render_turbo_stream_flash_messages %>

@@ -14,6 +14,13 @@ class Task < ApplicationRecord
     broadcast_remove_to "tasks", target: task.dom_id
   }
 
+  def serialize_for_template
+    {
+      title: title,
+      description: description
+    }
+  end
+
   protected
 
   def dom_id

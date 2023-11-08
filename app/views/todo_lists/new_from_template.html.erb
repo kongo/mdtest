@@ -1,0 +1,14 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back"), root_path %>
+
+  <div class="header">
+    <h1>New list from template</h1>
+  </div>
+
+  <%= turbo_frame_tag "new_todo_list_from_template" do %>
+    <%= render "form_from_template",  templates: @templates  %>
+  <% end %>
+
+</main>
+
+

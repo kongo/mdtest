@@ -4,7 +4,11 @@
   <% end %>
 </div>
 
-<%= turbo_frame_tag TodoList.new %>
+<div class="max-w-4xl mx-auto overflow-hidden mt-6 mb-0 p-0">
+  <%= turbo_frame_tag "new_todo_list_from_template" do %>
+    <%= render partial: "new_list_from_template_link" %>
+  <% end %>
+</div>
 
 <%= turbo_stream_from "todo_lists" %>
 

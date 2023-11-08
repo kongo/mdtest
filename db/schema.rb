@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_08_034659) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_08_040730) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_08_034659) do
     t.datetime "updated_at", null: false
     t.boolean "is_checked", default: false
     t.index ["list_section_id"], name: "index_tasks_on_list_section_id"
+  end
+
+  create_table "todo_list_templates", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.json "contents"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "todo_lists", force: :cascade do |t|
