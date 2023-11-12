@@ -15,6 +15,11 @@ class TasksController < ApplicationController
     @task = @list_section.tasks.new(task_params)
 
     if @task.save
+      Turbo::StreamsChannel.broadcast_prepend_to "tasks",
+        target: helpers.nested_dom_id(@task.todo_list, @task.list_section, :tasks),
+        partial: "tasks/task",
+        locals: { task: @task }
+
       respond_to do |format|
         format.turbo_stream { flash.now[:notice] = "Task was successfully created."}
       end
@@ -29,7 +34,16 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to todo_list_list_section_task_path(@task.todo_list, @task.list_section, @task), notice: "Task list was successfully updated."
+      Turbo::StreamsChannel.broadcast_replace_to "tasks",
+        target: helpers.nested_dom_id(*task_and_ancestors),
+        partial: "tasks/task", locals: { task: @task }
+      respond_to do |format|
+        format.html do
+          redirect_to todo_list_list_section_task_path(*task_and_ancestors),
+            notice: "Task list was successfully updated."
+        end
+        format.turbo_stream
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,6 +51,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
+    Turbo::StreamsChannel.broadcast_remove_to "tasks", target: helpers.nested_dom_id(*task_and_ancestors)
     respond_to do |format|
       format.html { redirect_to @task, notice: "Section list was successfully destroyed." }
       format.turbo_stream
@@ -59,5 +74,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(["title", "description", "is_checked"])
+  end
+
+  def task_and_ancestors
+    [@task.todo_list, @task.list_section, @task]
   end
 end
